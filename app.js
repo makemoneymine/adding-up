@@ -28,9 +28,11 @@ rl.on('line',lineString=>{
    }
 });
 rl.on('close',()=>{
+    //全データをループして変化率を計算
     for(let[key,value]of prefectureDateMap){
         value.change = value.popu15/value.popu10;
     }
+    //並べ替えを行う（難しずぎるためおぼえなくてOK）
    const rankingArray = Array.from(prefectureDateMap).sort((pair1,pair2)=>{
       return pair2[1].change - pair1[1].change; 
    });
